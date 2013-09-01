@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<interface>
+  <!-- interface-requires gtk+ 3.0 -->
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkListStore" id="estateList">
+    <columns>
+      <!-- column-name id -->
+      <column type="gint"/>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name addr -->
+      <column type="gchararray"/>
+      <!-- column-name developer -->
+      <column type="gchararray"/>
+      <!-- column-name managementCompany -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0">1</col>
+        <col id="1" translatable="yes">test1</col>
+        <col id="2" translatable="yes">testAddr1</col>
+        <col id="3" translatable="yes">testDevr1</col>
+        <col id="4" translatable="yes">testMC1</col>
+      </row>
+      <row>
+        <col id="0">2</col>
+        <col id="1" translatable="yes">test2</col>
+        <col id="2" translatable="yes">testAddr2</col>
+        <col id="3" translatable="yes">testDevr2</col>
+        <col id="4" translatable="yes">testMC2</col>
+      </row>
+      <row>
+        <col id="0">3</col>
+        <col id="1" translatable="yes">test3</col>
+        <col id="2" translatable="yes">testAddr3</col>
+        <col id="3" translatable="yes">testDevr3</col>
+        <col id="4" translatable="yes">testMC3</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="bldnList">
+    <columns>
+      <!-- column-name id -->
+      <column type="gint"/>
+      <!-- column-name unitCount -->
+      <column type="gint"/>
+      <!-- column-name storeyCount -->
+      <column type="gint"/>
+    </columns>
+  </object>
+  <object class="GtkListStore" id="cellList">
+    <columns>
+      <!-- column-name id -->
+      <column type="gint"/>
+      <!-- column-name cellStruct -->
+      <column type="gint"/>
+      <!-- column-name area -->
+      <column type="gfloat"/>
+      <!-- column-name shareRate -->
+      <column type="gfloat"/>
+      <!-- column-name price -->
+      <column type="gfloat"/>
+    </columns>
+  </object>
+  <object class="GtkWindow" id="window">
+    <property name="default_width">750</property>
+    <property name="default_height">500</property>
+    <signal name="destroy_event" handler="gtk_widget_destroy" object="window"/>
+    <child>
+      <object class="GtkVPaned" id="vpaned1">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="orientation">vertical</property>
+        <property name="position">420</property>
+        <child>
+          <object class="GtkTreeView" id="treeview_estate">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="model">estateList</property>
+            <property name="rules_hint">True</property>
+            <property name="search_column">1</property>
+          </object>
+          <packing>
+            <property name="resize">False</property>
+            <property name="shrink">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHButtonBox" id="hbuttonbox1">
+            <property name="visible">True</property>
+            <property name="spacing">10</property>
+            <property name="layout_style">center</property>
+            <child>
+              <object class="GtkButton" id="button_open">
+                <property name="label" translatable="yes">_Open</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button_search">
+                <property name="label" translatable="yes">_Search</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button_save">
+                <property name="label" translatable="yes">Sa_ve</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button_about">
+                <property name="label" translatable="yes">_About</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_underline">True</property>
+                <signal name="clicked" handler="gtk_widget_show" object="aboutdialog1"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button_exit">
+                <property name="label" translatable="yes">_Exit</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_underline">True</property>
+                <signal name="clicked" handler="gtk_main_quit" object="window"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">4</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="resize">True</property>
+            <property name="shrink">True</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAboutDialog" id="aboutdialog1">
+    <property name="border_width">5</property>
+    <property name="type_hint">normal</property>
+    <property name="has_separator">False</property>
+    <property name="program_name">Estate Manager w/GTK+</property>
+    <property name="version">0.0.3</property>
+    <property name="copyright" translatable="yes">(c) 2012 SFEI. All Rights Reserved.</property>
+    <signal name="close" handler="gtk_widget_hide" object="aboutdialog1"/>
+    <signal name="response" handler="gtk_widget_hide" object="aboutdialog1"/>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox1">
+        <property name="visible">True</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area1">
+            <property name="visible">True</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkTreeViewColumn" id="treeviewcolumn1">
+    <property name="title">column</property>
+  </object>
+  <object class="GtkTreeModelSort" id="treemodelsort_estate">
+    <property name="model">estateList</property>
+  </object>
+</interface>
